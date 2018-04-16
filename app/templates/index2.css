@@ -1,0 +1,41 @@
+body {
+    background-image: url("https://images.unsplash.com/photo-1506695041619-5dd4f46960b7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=044c4b555f12e75d67a672b7b99a485b&auto=format&fit=crop&w=1789&q=80");
+}
+
+.navbar {
+    background-color: white;
+    height: 50px;
+}
+
+.navbar img {
+    height: 45px;
+}
+
+.container {
+    margin: 10% auto;
+    width: 50%;
+}
+
+a {
+    font-size: 50px;    
+    height: 280px;
+    min-width: 280px;
+    margin-top: 10px;
+    background-color: white;
+    border: lightgrey 7px solid;
+    padding: 20px;
+    text-align: center;
+    color: black;
+    font-family: 'Muli', sans-serif;
+    border-radius: 15px;
+    opacity: 0.7;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+#login {
+    font-size: 70px;
+}

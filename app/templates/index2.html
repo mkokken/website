@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="box">
+    <h1>Input</h1>
+        <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.area.label }}<br>
+            {{ form.area(size=32) }} <br>
+            {{ form.jaar.label }}<br>
+            {{ form.jaar(size=32) }} <br>
+            {{ form.energieverbruik.label }}<br>
+            {{ form.energieverbruik(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <div class= "box">
+        {{result_line_chart|safe}}
+    </div>
+    
+    <div class= "box">
+        {{result_pie_chart|safe}}
+    </div>
+
+
+
+</div>
+<div class = "show">{{  string  }}</div>
+<div class="box-left">
+<p>Informatie</p>
+</div>
+
+{% endblock %}

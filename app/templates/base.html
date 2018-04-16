@@ -1,0 +1,40 @@
+{% extends 'bootstrap/base.html' %} 
+ 
+
+ {% block title %} 
+     {% if title %}{{ title }} - Amaethon{% else %}Welcome to Amaethon{% endif %}
+     
+ {% endblock %} 
+ {% block styles %}
+ <script src="d3.v3.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.7.0/nv.d3.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+ <link href="nv.d3.css" rel="stylesheet" type="text/css">
+ <link rel=stylesheet type=text/css href="{{ url_for('static',filename='styles/index2.css') }}">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ {% endblock %} 
+ 
+ {% block scripts %}
+ <script src="d3.v3.js"></script>
+ <script src="nv.d3.js"></script>
+ {% endblock %}
+ 
+ 
+ 
+{% block navbar %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/index">
+                <td><img src="\static\Logo_Amaethon.png"/><td>
+                    <a href="/index">Informatie</a>
+                    <a href="/index2">Nieuwe analyse</a></div>
+                    <a href="/testfile">Test pagina</a>
+                    <a href="/login">Login</a>
+
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+ 

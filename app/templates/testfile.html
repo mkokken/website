@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = "color">
+<div class="box">
+    <form oninput= "x.value=parseInt(a.value); y.value=parseInt(b.value)" action="" method="post">
+        {{ form.hidden_tag() }}
+
+        <div class= "form-group">
+            {{ form.bedrijfsnaam.label(class_="col-sm-3 col-form-label") }}                
+            {{ form.bedrijfsnaam(class_="form-control") }}            
+        </div>
+        
+        <div class= "form-group">
+            {{ form.postcode.label(class_="col-sm-3 col-form-label") }}             
+            {{ form.postcode(class_="form-control") }}
+        </div>
+                
+        <div class= "form-group">
+            {{ form.tbedrijf.label(class_="col-sm-3 col-form-label") }} 
+            {{ form.tbedrijf(class_="form-control") }}
+        </div>
+                
+        <div class= "form-group">
+            {{ form.a_pers.label(class_="col-sm-3 col-form-label") }}
+            {{ form.a_pers(class_="form-control", type="range") }}
+        </div>
+                
+        <div class= "form-group">
+            {{ form.omzet.label(class_="col-sm-4 col-form-label") }} 
+            {{ form.omzet(class_="form-control") }}
+        </div>
+                
+        <div class= "form-group">
+            {{ form.email.label(class_="col-sm-3 col-form-label") }} 
+            {{ form.email(class_="form-control") }}
+        </div>
+                
+        <div class= "form-group">
+            {{ form.phone.label(class_="col-sm-3 col-form-label") }}  
+            {{ form.phone(class_="form-control") }}
+        </div> 
+                               
+        <div class= "form-group">
+            {{ form.submit(class_="btn") }}
+        </div>
+        
+    </form>
+</div>
+</div>
+
+{% endblock %}
