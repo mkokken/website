@@ -83,6 +83,9 @@ def index2():
            
     return render_template('index2.html', title='Analyse',form=form, jan=jan, string=string, test_array=test_array, result_pie_chart=result_pie_chart, E=E, result_line_chart=result_line_chart)
 
+@app.route('/hoe_het_werkt')
+def hoe_het_werkt():
+        return render_template('hoe_het_werkt.html', title='Hoe het werkt')
 
 @app.route('/registreer')
 #@login_required
