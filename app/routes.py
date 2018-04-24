@@ -1,10 +1,11 @@
 from flask import render_template, url_for, redirect, request, flash
 from flask_script import Manager
-from app import app
-from app.forms import LoginForm, CalculateForm, TestForm, InputForm
+from werkzeug.urls import url_parse
+from app import app, db
+from app.forms import LoginForm, CalculateForm, TestForm, InputForm, RegistrationForm
 import numpy as np
 import time 
-from flask_login import current_user, login_user, login_required
+from flask_login import current_user, login_user, login_required, logout_user
 from app.models import User
 
 from graphs import create_pie_chart, create_line_chart, create_area_chart, create_line_chart2
@@ -14,6 +15,7 @@ from graphs import create_pie_chart, create_line_chart, create_area_chart, creat
 
 @app.route('/')
 @app.route('/index')
+@login_required
 def index():
     user = {'username': 'Mitchel'}
     posts = [
@@ -26,7 +28,7 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template('index.html', title='Home', user=user, posts=posts)
+    return render_template('index.html', title='Home', posts=posts)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -47,6 +49,7 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/index2', methods=['GET','POST'])
+@login_required
 def index2():
     jan = ''
     henk = ''
@@ -80,9 +83,35 @@ def index2():
            
     return render_template('index2.html', title='Analyse',form=form, jan=jan, string=string, test_array=test_array, result_pie_chart=result_pie_chart, E=E, result_line_chart=result_line_chart)
 
+<<<<<<< HEAD
 @app.route('/registreer')
 #@login_required
 def registreer():
+=======
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+@app.route('/testfile')
+@login_required
+def testfile():
+>>>>>>> cba2bf6798daf69943cef1bbbb18f8c4a6f0deb7
     form = TestForm()
     return render_template('registreer.html', title='Test', form=form)
 #
