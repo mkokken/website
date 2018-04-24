@@ -31,8 +31,11 @@
                     <a href="/index">Informatie</a>
                     <a href="/index2">Nieuwe analyse</a></div>
                     <a href="/testfile">Test pagina</a>
+                    {% if current_user.is_anonymous %}
                     <a href="/login">Login</a>
-
+                    {% else %}
+                    <a href="/logout">Logout</a>
+                    {% endif %}
             </div>
         </div>
     </nav>
