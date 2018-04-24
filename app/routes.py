@@ -15,7 +15,7 @@ from graphs import create_pie_chart, create_line_chart, create_area_chart, creat
 
 @app.route('/')
 @app.route('/index')
-@login_required
+#@login_required
 def index():
     user = {'username': 'Mitchel'}
     posts = [
@@ -83,11 +83,13 @@ def index2():
            
     return render_template('index2.html', title='Analyse',form=form, jan=jan, string=string, test_array=test_array, result_pie_chart=result_pie_chart, E=E, result_line_chart=result_line_chart)
 
-<<<<<<< HEAD
+
 @app.route('/registreer')
 #@login_required
 def registreer():
-=======
+    form = TestForm()
+    return render_template('registreer.html', title='Test', form=form)
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -111,7 +113,7 @@ def logout():
 @app.route('/testfile')
 @login_required
 def testfile():
->>>>>>> cba2bf6798daf69943cef1bbbb18f8c4a6f0deb7
+
     form = TestForm()
     return render_template('registreer.html', title='Test', form=form)
 #

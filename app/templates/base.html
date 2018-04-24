@@ -27,38 +27,17 @@
         <div class="container-fluid justify-content-start">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/index">
-<<<<<<< HEAD
                     <td><img src="\static\Logo_Amaethon.png"/><td>
             </div>
-                <!--                    <a href="/index">Informatie</a>-->
-    <!--                    <a href="/index2">Nieuwe analyse</a>-->
-    <!--                    <a href="/testfile">Test pagina</a>-->
-    <!--                    <a href="/login">Login</a>-->
             <div class="nav nav-pills nav-justified">
-                        <!--<li class="nav-item">-->
                 <a class="nav-link" href="/index">Home</a>
-                <a class="nav-link" href="#">Hoe het werkt</a>        <!--</li>-->
-                        <!--<li class="nav-item">-->
+                <a class="nav-link" href="#">Hoe het werkt</a>       
                 <a class="nav-link" href="/index2">Start analyse</a>
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
-                <!--<a class="nav-link" href="/registreer">Registreer nu</a>-->
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
+                {% if current_user.is_anonymous %}                       
                 <a class="nav-link active" href="/login">Log in</a>
-                        <!--</li>-->
-                    <!--</ul>-->
-=======
-                <td><img src="\static\Logo_Amaethon.png"/><td>
-                    <a href="/index">Informatie</a>
-                    <a href="/index2">Nieuwe analyse</a></div>
-                    <a href="/testfile">Test pagina</a>
-                    {% if current_user.is_anonymous %}
-                    <a href="/login">Login</a>
-                    {% else %}
-                    <a href="/logout">Logout</a>
-                    {% endif %}
->>>>>>> cba2bf6798daf69943cef1bbbb18f8c4a6f0deb7
+                {% else %}
+                <a class="nav-link active" href="/logout">Log out</a>
+                {% endif %}      
             </div>
         </div>
     </nav>
