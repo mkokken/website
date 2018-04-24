@@ -24,17 +24,32 @@
  
 {% block navbar %}
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="container-fluid justify-content-start">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/index">
-                <td><img src="\static\Logo_Amaethon.png"/><td>
-                    <a href="/index">Informatie</a>
-                    <a href="/index2">Nieuwe analyse</a></div>
-                    <a href="/testfile">Test pagina</a>
-                    <a href="/login">Login</a>
-
+                    <td><img src="\static\Logo_Amaethon.png"/><td>
+            </div>
+                <!--                    <a href="/index">Informatie</a>-->
+    <!--                    <a href="/index2">Nieuwe analyse</a>-->
+    <!--                    <a href="/testfile">Test pagina</a>-->
+    <!--                    <a href="/login">Login</a>-->
+            <div class="nav nav-pills nav-justified">
+                        <!--<li class="nav-item">-->
+                <a class="nav-link" href="/index">Home</a>
+                <a class="nav-link" href="#">Hoe het werkt</a>        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                <a class="nav-link" href="/index2">Start analyse</a>
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                <!--<a class="nav-link" href="/registreer">Registreer nu</a>-->
+                        <!--</li>-->
+                        <!--<li class="nav-item">-->
+                <a class="nav-link active" href="/login">Log in</a>
+                        <!--</li>-->
+                    <!--</ul>-->
             </div>
         </div>
     </nav>
+
 {% endblock %}
  

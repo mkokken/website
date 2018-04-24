@@ -80,11 +80,11 @@ def index2():
            
     return render_template('index2.html', title='Analyse',form=form, jan=jan, string=string, test_array=test_array, result_pie_chart=result_pie_chart, E=E, result_line_chart=result_line_chart)
 
-@app.route('/testfile')
-@login_required
-def testfile():
+@app.route('/registreer')
+#@login_required
+def registreer():
     form = TestForm()
-    return render_template('testfile.html', title='Test', form=form)
+    return render_template('registreer.html', title='Test', form=form)
 #
 #@app.route('/graph') 
 #def plotpage(): 
