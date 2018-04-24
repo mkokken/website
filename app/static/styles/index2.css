@@ -65,7 +65,7 @@ a:hover {
  font-size: 20px;
  color: black;}
 
-.box {
+.box2 {
     width: 1000px;
     margin: 10px auto;
     background-color: white;
@@ -74,16 +74,36 @@ a:hover {
     text-align: center;
 }
 
-.box-left {
+.box {
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#left {
+    float: left;
+    display: inline;
     width: 250px;
+    height: auto;
     margin: 10px auto;
     background-color: white;
     border-radius: 5px;
     justify-content: left;
-    text-align: center;
+}
+#right {
+    float: right;
+    display: inline;
+    width: 250px;
+    height: auto;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 5px;
+    justify-content: left;
 }
 
-
+#middle {
+    width: 1000px;
+}
 
 
 

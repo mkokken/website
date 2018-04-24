@@ -6,14 +6,18 @@ Created on Sun Apr 15 12:37:34 2018
 """
 
 import pandas as pd
-import numpy as np
-import matplotlib.pylab as plt
+
 
 #headers = [STN,YYYYMMDD,DDVEC,FHVEC,   FG,  FHX, FHXH,  FHN, FHNH,  FXX, FXXH,   TG,   TN,  TNH,   TX,  TXH, T10N,T10NH,   SQ,   SP,    Q,   DR,   RH,  RHX, RHXH,   PG,   PX,  PXH,   PN,  PNH,  VVN, VVNH,  VVX, VVXH,   NG,   UG,   UX,  UXH,   UN,  UNH, EV24]
-def create_dataset():
+def create_dataset(s):
+    var = str(s)
+    filename = 'dataset_'+var
     data = pd.read_table('KNMI_20180403.txt', delimiter=",", skiprows = 97)
     data.columns = data.columns.str.strip()
     data.rename(columns = {'# STN':'STN'}, inplace=True)
+    dataset = data.loc[data.STN ==s]
+    
+    dataset.to_pickle(filename)
     
                        
 
@@ -21,13 +25,11 @@ def create_dataset():
 #set_249 = data.loc[data.STN ==249]
 
 
-def data_extract(s,b):
+def data_extract(b):
     import pandas as pd
     length = b*365
-    data = pd.read_pickle('testfile')
-    var  = str(s)
-    var_name = 'set_' + var
-    dataset = data.loc[data.STN ==s]
+    dataset = pd.read_pickle('dataset_249')
+#    dataset = data.loc[data.STN ==s]
 
     sun_e = dataset.reset_index(drop=True).Q
     time  = dataset.reset_index(drop=True).YYYYMMDD

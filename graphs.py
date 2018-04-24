@@ -2,100 +2,71 @@
 def data_extract(s,b):
     import pandas as pd
     length = b*365
-    data = pd.read_pickle('testfile')    
-    var  = str(s)
-    var_name = 'set_' + var
-    dataset = data.loc[data.STN ==s]
+    dataset = pd.read_pickle('dataset_249')    
+  
+#    dataset = data.loc[data.STN ==s]
 
     sun_e = dataset.reset_index(drop=True).Q
-    time  = dataset.reset_index(drop=True).YYYYMMDD
+    time_d  = dataset.reset_index(drop=True).YYYYMMDD
     
     sun_e_list = sun_e.tolist()
-    time_list  = time.tolist()
+    time_list  = time_d.tolist()  
     
-    for i in range(len(sun_e_list)):
-        sun_e_list[i] = float(sun_e_list[i])
-        time_list[i] = float(time_list[i])
+    start_point = len(sun_e_list)-length
     
-    return sun_e_list[-length:]
+    for i in range(length):
+        sun_e_list[start_point + i] = float(sun_e_list[start_point + i])
+        time_list[start_point + i] = float(time_list[start_point + i])
+            
+    return sun_e_list[start_point:]
 
 
 
 def create_pie_chart(E,b):
     from nvd3 import pieChart
+    import time 
     import numpy as np
     energieverbruik = E 
-    b = b 
-    opbrengst = np.mean(data_extract(249,b))*365 
+    b = b
+    start = time.clock()
+    day_mean_e = np.mean(data_extract(249,b))
+    year_mean_kWh = day_mean_e*(365)/(24*10)
+    
+    besparingen = 0.2 * year_mean_kWh
+    boiler = 0.45 * year_mean_kWh
+    
     type = 'pieChart'
-    chart = pieChart(name=type, color_category='category10', height=550, width=1000)
-    xdata = ["Rest","Opbrengst uit panelen"]
-    ydata = [(energieverbruik-opbrengst), opbrengst]
-    extra_serie = {"tooltip": {"y_start": "", "y_end": " Joules"}}
+    chart = pieChart(name=type, color_category='category20', height=550, width=1000)
+    xdata = ["Rest","Opbrengst uit panelen", "Besparingen", "Opbrengst uit zonneboilers"]
+    ydata = [(energieverbruik-year_mean_kWh-besparingen - boiler), year_mean_kWh, besparingen, boiler]
+    extra_serie = {"tooltip": {"y_start": "", "y_end": " J/cm<sup>2"}}
     chart.add_serie(y=ydata, x=xdata, extra=extra_serie)
     chart.buildcontent()
     result = chart.htmlcontent
-    
+    tijd = start - time.clock()
     return result
 
-def create_line_chart(a,b):
+def create_line_chart(b):
     from nvd3 import lineWithFocusChart
-    import random 
     import datetime 
     import time 
-    mult = a
+
     year = 2000 +(18-b)
     start_time = int(time.mktime(datetime.datetime(year, 4, 1).timetuple()) * 1000) 
-    nb_element = 100 
 
-    test = True
-    
-    if test:
-        type = "lineWithFocusChart" 
-        chart = lineWithFocusChart(name=type, height=550, width=1000, 
-                                   color_category='category20b', x_is_date=True, 
-                                   x_axis_format="%d %b %Y", focus_enable=True) 
-        ydata = data_extract(249,b)
-        xdata = list(range(len(ydata))) 
-        xdata = [start_time + x * 86400000 for x in xdata] 
-        extra_serie = {"tooltip": {"y_start": "There was ", "y_end": " j/cm2"}, 
-               "date_format": "%d %b %Y"} 
-        chart.add_serie(name = 'Energie', y=ydata, x=xdata, extra=extra_serie)
-        chart.buildhtml()
-        result = chart.htmlcontent
 
-        
-    else: 
-        type = "lineWithFocusChart" 
-        chart = lineWithFocusChart(name=type, height=550, width=1000, 
-                                   color_category='category20b', x_is_date=True, 
-                                   x_axis_format="%d %b %Y %H", focus_enable=True) 
-        #chart.set_containerheader("\n\n<h2>" + type + "</h2>\n\n") 
-
-        
-         
-        xdata = list(range(nb_element)) 
-        xdata = [start_time + x * 1000000000 for x in xdata] 
-        ydata = [i + random.randint(-10, 10) for i in range(nb_element)] 
-        
-    
-        
-         
-        ydata2 = [x * 2*mult for x in ydata] 
-        ydata3 = [x * (3+mult) for x in ydata] 
-        ydata4 = [x * 4*mult for x in ydata] 
-        
-        extra_serie = {"tooltip": {"y_start": "There is ", "y_end": " calls"}, 
-                       "date_format": "%d %b %Y %H:%M:%S %p"} 
-        # extra_serie = None 
-        #chart.add_serie(name="serie 1", y=ydata, x=xdata, extra=extra_serie) 
-        #chart.add_serie(name="serie 2", y=ydata2, x=xdata, extra=extra_serie) 
-        #chart.add_serie(name="serie 3", y=ydata3, x=xdata, extra=extra_serie) 
-        chart.add_serie(name="serie 4", y=ydata4, x=xdata, extra=extra_serie) 
-        
-         
-        chart.buildhtml()
-        result = chart.htmlcontent
+    type = "lineWithFocusChart" 
+    chart = lineWithFocusChart(name=type, height=550, width=1000, 
+                               color_category='category20b', x_is_date=True, 
+                               x_axis_format="%d %b %Y", focus_enable=True) 
+    ydata = data_extract(249,b)
+    xdata = list(range(len(ydata))) 
+    xdata = [start_time + x * 86400000 for x in xdata] 
+    extra_serie = {"tooltip": {"y_start": "There was ", "y_end": " J/cm<sup>2"}, 
+           "date_format": "%d %b %Y"} 
+    chart.add_serie(name = 'Energie in J/cm<sup>2', y=ydata, x=xdata, extra=extra_serie)
+    chart.buildhtml()
+    result = chart.htmlcontent
     
     return result
 
@@ -121,10 +92,11 @@ def create_area_chart():
     return result
 
 def create_line_chart2(b):
-    from nvd3 import lineChart
-    import random 
-    import datetime 
     import time 
+    start = time.clock()
+    from nvd3 import lineChart
+    import datetime
+
 
     year = 2000 +(18-b)
     start_time = int(time.mktime(datetime.datetime(year, 4, 1).timetuple()) * 1000) 
@@ -132,18 +104,20 @@ def create_line_chart2(b):
     chart = lineChart(name=type, x_is_date=True, x_axis_format="%d %b %Y") 
     
     ydata = data_extract(249,b)
+
     xdata = list(range(len(ydata))) 
     xdata = [start_time + x * 86400000 for x in xdata] 
     kwargs1 = {'color': '#66b3ff'} 
 
-    extra_serie = {"tooltip": {"y_start": "There was ", "y_end": " j/cm2"}} 
+    extra_serie = {"tooltip": {"y_start": "There was ", "y_end": " J/cm<sup>2"}} 
     chart.add_serie(y=ydata, x=xdata, name='Zonne-energie', extra=extra_serie, **kwargs1) 
-
+    
     
     chart.buildhtml() 
-    
+    tijd = start - time.clock()    
     result = chart.htmlcontent
+
     
-    return result 
+    return result
 
 

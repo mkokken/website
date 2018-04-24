@@ -10,10 +10,10 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
     
 class CalculateForm(FlaskForm):
-    area = StringField('Area', validators=[DataRequired()])
-    jaar = StringField('Opbrengts jaren', validators=[DataRequired()])
-    energieverbruik = StringField('Energie verbruik',validators=[DataRequired()])
-    submit = SubmitField('Calculate green value')
+    area = StringField('Beschikbare dakoppervlak in m<sup>2', validators=[DataRequired()])
+    jaar = StringField('Hoeveel jaren wil je meenemen in het advies? (twee geeft de beste optimalisatie)', validators=[DataRequired()], default =2)
+    energieverbruik = StringField('Energie verbruik per jaar in kWh',validators=[DataRequired()])
+    submit = SubmitField('Creer advies')
     
 class TestForm(FlaskForm):
     bedrijfsnaam = StringField('Bedrijfsnaam:', validators = [DataRequired()])

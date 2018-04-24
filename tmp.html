@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style type="text/css">
+* {margin:0;padding:0}
+p{margin:0 0 1em 0}
+body{text-align:center}
+#outer{
+ background:#f2f2f2;
+ width:768px;
+ margin:10px auto;
+ text-align:left;
+}
+#left{
+float:left;
+width:220px;
+margin: 0 5px;
+display:inline;/*Ie double margin bug*/
+background:red;
+}
+#right{
+float:right;
+width:220px;
+margin:0 5px;
+display:inline;/*Ie double margin bug*/
+background:blue;
+}
+#middle{
+margin:0 230px;
+background:green
+}
+/* mac hide \*/
+* html #middle{height:1%}
+/* end hide*/
+/* clear floats without structural mark up */
+.clearfix:after {
+	content:"."; 
+	display:block; 
+	height:0; 
+	clear:both; 
+	visibility:hidden;
+}
+.clearfix {
+	display:inline-block;
+}
+ /* mac hide \*/
+	* html .clearfix {height: 1%;}
+	  .clearfix {display: block;}
+ /* End hide */
+</style>
+</head>
+<body>
+<div id="outer" class="clearfix">
+ <div id="left">
+  <p>This is the left side content : This is the left side content : This is the left side content : This is the left side content : This is the left side content : </p>
+ </div>
+ <div id="right">
+  <p>This is the right side content : This is the right side content : This is the right side content : This is the right side content : This is the right side content : This is the right side content : This is the right side content : </p>
+ </div>
+ <div id="middle">
+  <p>This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content : This is the middle content
+   : This is the middle content : This is the middle content : </p>
+ </div>
+</div>
+</body>
+</html>
