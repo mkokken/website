@@ -1,0 +1,58 @@
+- Prototype
+1. Landing page
+	Content (Ruiz, Dieter & Anne)
+2. Registratieformulier
+	Formulier bouwen (Mitchel & Wybren)
+	Opslaan gegevens (Mitchel & Wybren)
+	Koppeling naar keuze investeringsopties (Mitchel & Wybren)
+3. Keuze investeringsopties
+	Keuzemenu maken (Mitchel & Wybren)
+	Koppeling naar de volgende form (Mitchel & Wybren)
+4. Verdere informatie
+	Formulier(en) bouwen (Mitchel & Wybren)
+	Koppeling naar Python (Mitchel & Wybren)
+5. Resultaten
+	Python script (Mitchel & Wybren)
+	Resultatenoverzicht (Mitchel & Wybren)
+	Detail informatie (Mitchel & Wybren)
+6. Solution validation
+	Allen
+	
+- Lean canvas check
+Allen
+
+- Investment memorandum
+Dieter
+Support Ruiz
+
+- Tech check
+Later stadium
+	Two meetings held, next meeting when there is a more advanced product. Meetings did not raise any concern with regard to advancement of the project.
+
+	- Commitment check
+- Team (beschikbare tijd juni-september - bereidheid om tijd te besteden)
+Ruiz Knöbel
+Mitchel Kokken
+Dieter Wien
+Anne Semplonius
+Wybren Brouwer
+
+- Ambassador/EY foundation (bereidheid om uren en budget beschikbaar te stellen in periode juni-september - hoeveel uren/hoeveel budget?)
+Dieter
+1. Arnoud Kuijpers
+2. Jaap Hetebrij
+3. Henk Hokse
+4. EY foundation
+5. CCaSS
+
+- Pitch
+Ruiz Knöbel
+Support (1e Dieter, 2e Wybren, 3e Mitchel) 
+
+- Stakeholder management
+Wybren
+1. Eelco
+2. Remco
+		
+- Rabobank, ASN bank, FMO
+Later stadium
